@@ -1,0 +1,17 @@
+
+
+.reveal table.numeric { 
+	display: inline-block;
+	border-collapse: collapse;
+}
+.reveal table.numeric th { 
+	border: 1px solid gray;
+	padding: 0.25em;
+}
+.reveal table.numeric td {
+	text-align: right; 
+	/*background-color: red;*/
+	border: 1px solid gray;
+	padding: 0.25em;
+}
+

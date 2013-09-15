@@ -329,7 +329,7 @@ body {
 
 .reveal table th,
 .reveal table td {
-	text-align: left;
+	/*text-align: left;*/
 	padding-right: .3em;
 }
 
