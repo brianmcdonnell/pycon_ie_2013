@@ -1,17 +1,15 @@
-
-
-.reveal table.numeric { 
+.reveal table { 
 	display: inline-block;
 	border-collapse: collapse;
 }
-.reveal table.numeric th { 
+.reveal table th,
+.reveal table td { 
 	border: 1px solid gray;
 	padding: 0.25em;
 }
-.reveal table.numeric td {
+.reveal table.numeric td,
+.reveal table td.numeric {
 	text-align: right; 
 	/*background-color: red;*/
-	border: 1px solid gray;
-	padding: 0.25em;
 }
 

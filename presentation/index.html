@@ -50,15 +50,6 @@
 				</section>
 
 				<section>
-					<h2>Throughput Vs Performance</h2>
-					<h3>Same-Same but Different</h3>
-					<ul>
-						<li>Closely related to performance</li>
-						<li>Different to performance</li>
-					</ul>
-				</section>
-
-				<section>
 					<h2>Measuring Throughput</h2>
 					<h3>It's Fun!</h3>
 					<ul>
@@ -66,10 +57,22 @@
 						<li>Test-server should *never* be waiting for work to do.</li>
 						<li>Throughput asymptotes (or worse) at resource exhaustion</li>
 						<ul>
-							<li style="color: orange;">CPU</li>
+							<li style="color: lightgreen;">CPU</li>
 							<li>IO</li>
 							<li>Memory</li>
 						</ul>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Throughput Vs Performance</h2>
+					<h3>Same-same, but Different</h3>
+					<ul>
+						<li>Assuming CPU-bound</li>
+						<li><span style="font-size: 1.5em;">&darr;</span>computational-cost == <span style="font-size: 1.5em;">&uarr;</span>throughput</li>
+							<li><span style="font-size: 1.5em;">&darr;</span>io-time =/= <span style="font-size: 1.5em;">&uarr;</span>throughput</li>
+						<li>Time-per-request can be poor, while throughput is great</li>
+
 					</ul>
 				</section>
 
@@ -88,7 +91,7 @@
 					<h2>Measuring Throughput</h2>
 					<h3>Setup test-rig machine</h3>
 					<ul>
-						<li>Install software that can drive a lot of load (e.g. weighttp, httperf, ab)</li>
+						<li>Install weighttp(or httperf) to drive traffic</li>
 						<li>Run test</li>
 					</ul>
 					<pre>
@@ -113,7 +116,7 @@ $ weighttp -k -c 8 -n 1000 http://target.pycon.ie/a.gif
 
 				<section>
 					<h2>Ultimate Test</h2>
-					<h3>Weighttp---|--->Nginx---(uwsgi)--->UWsgi--->PythonWebFramework></h3>
+					<h3>Weighttp---|--->Nginx/UWsgi/Python Web Framework</h3>
 					<p>
 					Add diagram showing configurations
 					</p>
@@ -123,23 +126,49 @@ $ weighttp -k -c 8 -n 1000 http://target.pycon.ie/a.gif
 					<h2>First Test</h2>
 					<h3>Weighttp---|--->Nginx</h3>
 					<ul>
-						<li>AWS Small Instance</li>
+						<li>2 AWS Small Instances</li>
 						<li>Same Availability Zone</li>
 					</ul>
 					<p>
-					Add diagram showing both machines
+					Add diagram showing both machines (ping-pong background)
 					</p>
+				</section>
+					
+				<section>
+					<h2>Comparison</h2>
+					<h3>Doing similar work, but Nginx has to support more</h3>
+				
+					<table>
+						<thead>
+							<tr><th></th><th>Weighttp</th><th>Nginx</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>Language</td><td>C</td><td>C</td></tr>
+							<tr><td>Concurrency Model</td><td>Single-threaded, evented</td><td>Single-threaded, evented</td></tr>
+							<tr><td>Supports</td><td>Reduced HTTP</td><td>Full HTTP</td></tr>
+						</tbody>
+					</table>
 				</section>
 
 				<section>
 					<h2>Nginx Work</h2>
 					<h3>Responds to each request with an empty gif</h3>
-					<ul>
-						<li>Read request from socket (IO &amp; syscall)</li>
-						<li>Parse request (CPU)</li>
-						<li>Match request against nginx.conf (CPU)</li>
-						<li>Write response to socket (IO &amp; syscall)</li>
-					</ul>
+					<small>
+					<table>
+						<thead>
+							<tr><th></th><th>IO</th><th colspan="2">Computation</th></tr>
+							<tr><th></th><th></th><th>User/App</th><th>System/Syscall</th></tr>
+						</thead>
+						<tbody>
+							<tr><td>TCP Cxn Open</td><td>syn-ack, ack</td><td></td><td>accept</td></tr>
+							<tr><td>Read request</td><td>recv data</td><td></td><td>read</td></tr>
+							<tr><td>Parse request</td><td>-</td><td>string parsing</td><td></td></tr>
+							<tr><td>Match request(nginx.conf)</td><td>-</td><td>rule matching</td><td></td></tr>
+							<tr><td>Write response</td><td>send data</td><td></td><td>send</td></tr>
+							<tr><td>TCP Cxn close</td><td>fin, fin-ack</td><td></td><td>close</td></tr>
+						</tbody>
+					</table>
+				</small>
 				</section>
 
 				<section>
@@ -152,6 +181,27 @@ $ weighttp -k -c 8 -n 1000 http://target.pycon.ie/a.gif
 						<h2>Feck</h2>
 						<h3>No internet connectivity</h3>
 					</section>
+
+					<section>
+						<h2>Concurrency=1 (Sequential Requests)</h2>
+						<p>Show screen shot of two htops</p>
+					</section>
+
+					<section>
+						<h2>Concurrency=2</h2>
+						<p>Show screen shot of two htops</p>
+					</section>
+
+					<section>
+						<h2>Concurrency=4</h2>
+						<p>Show screen shot of two htops</p>
+					</section>
+
+					<section>
+						<h2>Concurrency=8</h2>
+						<p>Show screen shot of two htops</p>
+					</section>
+
 				</section>
 
 				<section>
