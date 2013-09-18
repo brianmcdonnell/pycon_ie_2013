@@ -24,6 +24,8 @@
 		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
 			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+			//document.write('<link rel="stylesheet" href="https://gist.github.com/assets/embed-4252e560c3e6f4c476a216c2bb7938cd.css">')
+			//document.write('<div id=\"gist3166557\" class=\"gist\">\n        <div class=\"gist-file\">\n          <div class=\"gist-data gist-syntax\">\n            \n\n\n\n    <div class=\"file-data\">\n      <table cellpadding=\"0\" cellspacing=\"0\" class=\"lines highlight\">\n        <tr>\n          <td class=\"line-numbers\">\n            <span class=\"line-number\" id=\"file-gistfile1-css-L1\" rel=\"file-gistfile1-css-L1\">1<\/span>\n            <span class=\"line-number\" id=\"file-gistfile1-css-L2\" rel=\"file-gistfile1-css-L2\">2<\/span>\n            <span class=\"line-number\" id=\"file-gistfile1-css-L3\" rel=\"file-gistfile1-css-L3\">3<\/span>\n            <span class=\"line-number\" id=\"file-gistfile1-css-L4\" rel=\"file-gistfile1-css-L4\">4<\/span>\n            <span class=\"line-number\" id=\"file-gistfile1-css-L5\" rel=\"file-gistfile1-css-L5\">5<\/span>\n          <\/td>\n          <td class=\"line-data\">\n            <pre class=\"line-pre\"><div class=\"line\" id=\"file-gistfile1-css-LC1\"><span class=\"nt\">html<\/span><span class=\"nc\">.intro<\/span> <span class=\"nt\">body<\/span> <span class=\"p\">{<\/span><\/div><div class=\"line\" id=\"file-gistfile1-css-LC2\">	<span class=\"k\">background<\/span><span class=\"o\">:<\/span><span class=\"sx\">url(&quot;images/raiders_warehouse.jpg&quot;)<\/span><span class=\"p\">;<\/span><\/div><div class=\"line\" id=\"file-gistfile1-css-LC3\">	<span class=\"k\">background-position<\/span><span class=\"o\">:<\/span><span class=\"k\">center<\/span><span class=\"p\">;<\/span><\/div><div class=\"line\" id=\"file-gistfile1-css-LC4\">	<span class=\"k\">background<\/span><span class=\"o\">-<\/span><span class=\"k\">size<\/span><span class=\"o\">:<\/span> <span class=\"m\">100<\/span><span class=\"o\">%<\/span><span class=\"p\">;<\/span><\/div><div class=\"line\" id=\"file-gistfile1-css-LC5\"><span class=\"p\">}<\/span><\/div><\/pre>\n          <\/td>\n        <\/tr>\n      <\/table>\n    <\/div>\n\n          <\/div>\n          <div class=\"gist-meta\">\n            <a href=\"https://gist.github.com/cfjedimaster/3166557/raw/ff84e73b11d422d09faef219a3eae44bddec08b3/gistfile1.css\" style=\"float:right\">view raw<\/a>\n            <a href=\"https://gist.github.com/cfjedimaster/3166557#file-gistfile1-css\">gistfile1.css<\/a>\n            hosted with &#10084; by <a href=\"https://github.com\">GitHub<\/a>\n          <\/div>\n        <\/div>\n<\/div>\n')
 		</script>
 
 		<!--[if lt IE 9]>
@@ -87,31 +89,33 @@
 					<p style="margin-top: 1em" margin-top>AWS Small instance can be handy (1 ECU)</p>
 				</section>
 
-				<section>
-					<h2>Measuring Throughput</h2>
-					<h3>Setup test-rig machine</h3>
-					<ul>
-						<li>Install weighttp(or httperf) to drive traffic</li>
-						<li>Run test</li>
-					</ul>
-					<pre>
-						<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+				<section data-background="./images/ping-pong-grey.jpg">
+					<div class="frosted">
+						<h2>Measuring Throughput</h2>
+						<h3>Setup test-rig machine</h3>
+						<ul>
+							<li>Install weighttp(or httperf) to drive traffic</li>
+							<li>Run test</li>
+						</ul>
+						<pre>
+							<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 $ weighttp -k -c 1 -n 1000 http://target.pycon.ie/a.gif
-						</code>
-					</pre>
-					<ul style="display: block">
-						<li>Ramp up concurrency &amp; repeat</li>
-					</ul>
-					<pre>
-						<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+							</code>
+						</pre>
+						<ul style="display: block">
+							<li>Ramp up concurrency &amp; repeat</li>
+						</ul>
+						<pre>
+							<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 $ weighttp -k -c 2 -n 1000 http://target.pycon.ie/a.gif
 ...
 $ weighttp -k -c 4 -n 1000 http://target.pycon.ie/a.gif
 ...
 $ weighttp -k -c 8 -n 1000 http://target.pycon.ie/a.gif
 ... etc...
-						</code>
-					</pre>
+							</code>
+						</pre>
+					</div>
 					</section>
 
 				<section>
@@ -122,16 +126,18 @@ $ weighttp -k -c 8 -n 1000 http://target.pycon.ie/a.gif
 					</p>
 				</section>
 
-				<section>
-					<h2>First Test</h2>
-					<h3>Weighttp---|--->Nginx</h3>
-					<ul>
-						<li>2 AWS Small Instances</li>
-						<li>Same Availability Zone</li>
-					</ul>
-					<p>
-					Add diagram showing both machines (ping-pong background)
-					</p>
+				<section data-state="ping-pong">
+					<div class="frosted">
+						<h2>First Test</h2>
+						<h3>Weighttp---|--->Nginx</h3>
+						<ul>
+							<li>2 AWS Small Instances</li>
+							<li>Same Availability Zone</li>
+						</ul>
+						<p>
+						Add diagram showing both machines (ping-pong background)
+						</p>
+					</div>
 				</section>
 					
 				<section>
@@ -184,7 +190,15 @@ $ weighttp -k -c 8 -n 1000 http://target.pycon.ie/a.gif
 
 					<section>
 						<h2>Concurrency=1 (Sequential Requests)</h2>
-						<p>Show screen shot of two htops</p>
+						<pre>
+							<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+$ weighttp -k -c 1 -n 1000 http://target.pycon.ie/a.gif
+							</code>
+						</pre>
+
+					</section>
+
+					<section data-state="htop_x2">
 					</section>
 
 					<section>
@@ -474,6 +488,7 @@ function linkify( selector ) {
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+				//backgroundTransition: "slide",
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [

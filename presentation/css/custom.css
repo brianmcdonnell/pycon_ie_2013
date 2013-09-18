@@ -13,3 +13,22 @@
 	/*background-color: red;*/
 }
 
+
+html.htop_x2 body {
+	background:url("../images/htop_x2.jpg");
+	background-position:center;
+	background-size: 100%;
+}
+
+html.ping-pong body {
+	background:url("../images/kitten-ping-pong.gif");
+	background-position:center;
+	background-size: 100%;
+}
+
+.reveal .frosted {
+	padding: 1em;
+	-webkit-border-radius: 25px;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
