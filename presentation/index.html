@@ -126,7 +126,7 @@ $ weighttp -k -c 8 -n 1000 http://target.pycon.ie/a.gif
 					</p>
 				</section>
 
-				<section data-state="ping-pong">
+				<section data-state="ping-pong" data-background-transition="slide">
 					<div class="frosted">
 						<h2>First Test</h2>
 						<h3>Weighttp---|--->Nginx</h3>
@@ -163,7 +163,7 @@ $ weighttp -k -c 8 -n 1000 http://target.pycon.ie/a.gif
 					<table>
 						<thead>
 							<tr><th></th><th>IO</th><th colspan="2">Computation</th></tr>
-							<tr><th></th><th></th><th>User/App</th><th>System/Syscall</th></tr>
+							<tr><th></th><th></th><th>User</th><th>System</th></tr>
 						</thead>
 						<tbody>
 							<tr><td>TCP Cxn Open</td><td>syn-ack, ack</td><td></td><td>accept</td></tr>
@@ -198,7 +198,7 @@ $ weighttp -k -c 1 -n 1000 http://target.pycon.ie/a.gif
 
 					</section>
 
-					<section data-state="htop_x2">
+					<section data-state="htop_x2" data-background-transition="slide">
 					</section>
 
 					<section>
@@ -219,8 +219,8 @@ $ weighttp -k -c 1 -n 1000 http://target.pycon.ie/a.gif
 				</section>
 
 				<section>
-					<h2>Nginx Results</h2>
-					<h3></h3>
+					<h2>Results</h2>
+					<h3>Weighttp---|--->Nginx</h3>
 					<table class="numeric">
 						<thead>
 							<tr><th>rig concurrency</th><th>q/s</th><th>rig cpu</th><th>test cpu</th></tr>
