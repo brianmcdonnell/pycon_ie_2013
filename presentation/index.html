@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+		<title>Maximum Throughput</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -82,40 +82,38 @@
 					<h2>Measuring Throughput</h2>
 					<h3>Setup test-target server</h3>
 					<ul>
-						<li>Install software to test (NGinx/Django)</li>
+						<li>Install software to test (Nginx/Django)</li>
 						<li>Stop all unrequired services (munin, cron jobs)</li>
 						<li>Note machine specs (cpu, mem)</li>
 					</ul>
 					<p style="margin-top: 1em" margin-top>AWS Small instance can be handy (1 ECU)</p>
 				</section>
 
-				<section data-background="./images/ping-pong-grey.jpg">
-					<div class="frosted">
-						<h2>Measuring Throughput</h2>
-						<h3>Setup test-rig machine</h3>
-						<ul>
-							<li>Install weighttp(or httperf) to drive traffic</li>
-							<li>Run test</li>
-						</ul>
-						<pre>
-							<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+				<section>
+					<h2>Measuring Throughput</h2>
+					<h3>Setup test-rig machine</h3>
+					<ul>
+						<li>Install weighttp(or httperf) to drive traffic</li>
+						<li>Run test</li>
+					</ul>
+					<pre>
+						<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 $ weighttp -k -c 1 -n 1000 http://target.pycon.ie/a.gif
-							</code>
-						</pre>
-						<ul style="display: block">
-							<li>Ramp up concurrency &amp; repeat</li>
-						</ul>
-						<pre>
-							<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+						</code>
+					</pre>
+					<ul style="display: block">
+						<li>Ramp up concurrency &amp; repeat</li>
+					</ul>
+					<pre>
+						<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 $ weighttp -k -c 2 -n 1000 http://target.pycon.ie/a.gif
 ...
 $ weighttp -k -c 4 -n 1000 http://target.pycon.ie/a.gif
 ...
 $ weighttp -k -c 8 -n 1000 http://target.pycon.ie/a.gif
 ... etc...
-							</code>
-						</pre>
-					</div>
+						</code>
+					</pre>
 					</section>
 
 				<section>
@@ -125,9 +123,9 @@ $ weighttp -k -c 8 -n 1000 http://target.pycon.ie/a.gif
 					Add diagram showing configurations
 					</p>
 				</section>
-
+				
 				<section data-state="ping-pong" data-background-transition="slide">
-					<div class="frosted">
+					<div class="fragment frosted">
 						<h2>First Test</h2>
 						<h3>Weighttp---|--->Nginx</h3>
 						<ul>
@@ -154,27 +152,6 @@ $ weighttp -k -c 8 -n 1000 http://target.pycon.ie/a.gif
 							<tr><td>Supports</td><td>Reduced HTTP</td><td>Full HTTP</td></tr>
 						</tbody>
 					</table>
-				</section>
-
-				<section>
-					<h2>Nginx Work</h2>
-					<h3>Responds to each request with an empty gif</h3>
-					<small>
-					<table>
-						<thead>
-							<tr><th></th><th>IO</th><th colspan="2">Computation</th></tr>
-							<tr><th></th><th></th><th>User</th><th>System</th></tr>
-						</thead>
-						<tbody>
-							<tr><td>TCP Cxn Open</td><td>syn-ack, ack</td><td></td><td>accept</td></tr>
-							<tr><td>Read request</td><td>recv data</td><td></td><td>read</td></tr>
-							<tr><td>Parse request</td><td>-</td><td>string parsing</td><td></td></tr>
-							<tr><td>Match request(nginx.conf)</td><td>-</td><td>rule matching</td><td></td></tr>
-							<tr><td>Write response</td><td>send data</td><td></td><td>send</td></tr>
-							<tr><td>TCP Cxn close</td><td>fin, fin-ack</td><td></td><td>close</td></tr>
-						</tbody>
-					</table>
-				</small>
 				</section>
 
 				<section>
@@ -232,6 +209,35 @@ $ weighttp -k -c 1 -n 1000 http://target.pycon.ie/a.gif
 							<tr><td>8</td><td>2500</td><td>7%</td><td>99%</td></tr>
 						</tbody>
 					</table>
+				</section>
+				
+				<section>
+					<h2>Results</h2>
+					<h3>Weighttp---|--->Nginx</h3>
+					<p>Show graph of results</p>
+				</section>
+
+				<section data-background="./images/tron_user_vs_system.jpg" data-background-transition="slide">
+					<div class="frosted">
+						<h2>Nginx Work</h2>
+						<h3>User vs System</h3>
+						<small>
+							<table class="fragment">
+								<thead>
+									<tr><th></th><th>IO</th><th colspan="2">Computation</th></tr>
+									<tr><th></th><th></th><th>User</th><th>System</th></tr>
+								</thead>
+								<tbody>
+									<tr><td>TCP Cxn Open</td><td>syn-ack, ack</td><td></td><td>accept</td></tr>
+									<tr><td>Read request</td><td>recv data</td><td></td><td>read</td></tr>
+									<tr><td>Parse request</td><td>-</td><td>string parsing</td><td></td></tr>
+									<tr><td>Match request(nginx.conf)</td><td>-</td><td>rule matching</td><td></td></tr>
+									<tr><td>Write response</td><td>send data</td><td></td><td>send</td></tr>
+									<tr><td>TCP Cxn close</td><td>fin, fin-ack</td><td></td><td>close</td></tr>
+								</tbody>
+							</table>
+						</small>
+					</div>
 				</section>
 
 
