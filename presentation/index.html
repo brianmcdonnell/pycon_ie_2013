@@ -91,10 +91,8 @@
 
 				<section>
 					<h2>Measuring Throughput</h2>
-					<h3>Setup test-rig machine</h3>
+					<h3>Drive load with Weighttp</h3>
 					<ul>
-						<li>Install weighttp(or httperf) to drive traffic</li>
-						<li>Run test</li>
 					</ul>
 					<pre>
 						<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
@@ -102,7 +100,7 @@ $ weighttp -k -c 1 -n 1000 http://target.pycon.ie/a.gif
 						</code>
 					</pre>
 					<ul style="display: block">
-						<li>Ramp up concurrency &amp; repeat</li>
+						<li>Ramp up concurrency</li>
 					</ul>
 					<pre>
 						<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
@@ -122,7 +120,7 @@ $ weighttp -k -c 8 -n 1000 http://target.pycon.ie/a.gif
 					<p>
 					Add diagram showing configurations
 					</p>
-				</section>
+					</section>
 				
 				<section data-state="ping-pong" data-background-transition="slide">
 					<div class="fragment frosted">
@@ -139,9 +137,7 @@ $ weighttp -k -c 8 -n 1000 http://target.pycon.ie/a.gif
 				</section>
 					
 				<section>
-					<h2>Comparison</h2>
-					<h3>Doing similar work, but Nginx has to support more</h3>
-				
+					<h2>Weighttp Vs Nginx</h2>
 					<table>
 						<thead>
 							<tr><th></th><th>Weighttp</th><th>Nginx</th></tr>
