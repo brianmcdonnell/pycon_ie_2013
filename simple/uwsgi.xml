@@ -1,9 +1,9 @@
 <uwsgi>
     <!-- This must match the nginx source connection config -->
-    <socket>0.0.0.0:20000</socket>
+    <!--<socket>0.0.0.0:20000</socket>-->
+    <!--<protocol>uwsgi</protocol>-->
     <workers>1</workers>
     <threads>1</threads>
-    <protocol>uwsgi</protocol>
 
     <chdir>/home/ubuntu/pycon_ie_2013/simple</chdir>
 
