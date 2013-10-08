@@ -4,14 +4,17 @@ import cherrypy
 
 class Handler:
   @cherrypy.expose
-  def index(self):
+  def hello(self):
     r = cherrypy.response
     r.headers['Content-Type'] = 'text/plain'
     return "Hello from CherryPy"
 
-def application(environ, start_response):
-  cherrypy.tree.mount(Handler(), '/hello', None)
-  return cherrypy.tree(environ, start_response)
+application = cherrypy.Application(Handler(), '/', None)
 
 if __name__ == "__main__":
-    cherrypy.quickstart(Handler(), '/hello', None)
+    import cherrypy.wsgiserver
+    server = cherrypy.wsgiserver.CherryPyWSGIServer(('127.0.0.1', 8000), application, 1)
+    try:
+        server.start()
+    except KeyboardInterrupt:
+        server.stop()
