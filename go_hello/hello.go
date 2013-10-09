@@ -2,6 +2,7 @@ package main
 
 import (
     "fmt"
+    "net"
     "net/http"
 )
 
@@ -16,6 +17,6 @@ func main() {
     if err != nil {
         fmt.Printf("%s\n", err)
     } else {
-        err := http.Serve(l, nil)
+        http.Serve(l, nil)
     }
 }
