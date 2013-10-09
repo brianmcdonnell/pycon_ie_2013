@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 
 import cherrypy
+cherrypy.log.access_file = None
 
 class Handler:
   @cherrypy.expose
