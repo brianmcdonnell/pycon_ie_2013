@@ -5,6 +5,13 @@ app.get('/hello', function(req, res){
   res.send('Hello from Nodejs via (expressjs)');
 });
 
+
+function shutdown() {
+    server.close(); // socket file is automatically removed here
+    process.exit();
+}
+process.on('SIGINT', shutdown);
+
 //app.listen(8080);
 //console.log('Node listening on port 8080');
 app.listen('/tmp/node_hello.sock');
