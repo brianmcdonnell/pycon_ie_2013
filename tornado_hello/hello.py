@@ -22,6 +22,9 @@ if __name__ == "__main__":
         server = HTTPServer(application)
         socket = bind_unix_socket(options.unix_socket)
         server.add_socket(socket)
+        print "Listening on %s" % options.unix_socket
     else:
         application.listen(options.listen_port, address=options.listen_address)
+        print "Listening on http://%s:%s" % (options.listen_address, options.listen_port)
+
     tornado.ioloop.IOLoop.instance().start()
