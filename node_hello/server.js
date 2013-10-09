@@ -14,5 +14,5 @@ process.on('SIGINT', shutdown);
 
 //app.listen(8080);
 //console.log('Node listening on port 8080');
-app.listen('/tmp/node_hello.sock');
+var server = app.listen('/tmp/node_hello.sock');
 console.log('Node listening at unix://tmp/node_hello.sock');
