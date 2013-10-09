@@ -9,7 +9,7 @@ class HelloHandler(tornado.web.RequestHandler):
 
 application = tornado.web.Application([
     (r"/hello", HelloHandler),
-])
+], debug=False)
 
 define('listen_address', default='127.0.0.1', help='Listen address')
 define('listen_port', default=8080, help='Listen port')
