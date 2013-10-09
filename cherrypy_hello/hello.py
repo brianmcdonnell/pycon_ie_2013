@@ -14,7 +14,9 @@ application = cherrypy.Application(Handler(), '/cherrypy_hello', None)
 if __name__ == "__main__":
     import cherrypy.wsgiserver
     wsgi_application = cherrypy.Application(Handler(), '/', None)
-    server = cherrypy.wsgiserver.CherryPyWSGIServer(('127.0.0.1', 8000), wsgi_application, 1)
+    listen_cfg = ('127.0.0.1', 8000)
+    server = cherrypy.wsgiserver.CherryPyWSGIServer(listen_cfg, wsgi_application, 1)
+    print "Cherrypy listening on http://%s:%s" % listen_cfg
     try:
         server.start()
     except KeyboardInterrupt:
