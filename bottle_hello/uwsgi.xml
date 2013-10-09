@@ -5,6 +5,9 @@
     <workers>1</workers>
     <threads>1</threads>
 
+    <!-- Clean sock & pid files upon exit -->
+    <vacuum />
+
     <chdir>/home/ubuntu/pycon_ie_2013/bottle_hello</chdir>
 
     <!--

@@ -5,7 +5,10 @@
     <workers>1</workers>
     <threads>1</threads>
 
-    <chdir>/home/ubuntu/pycon_ie_2013/django_hello</chdir>
+   <!-- Clean sock & pid files upon exit -->
+   <vacuum />
+
+   <chdir>/home/ubuntu/pycon_ie_2013/django_hello</chdir>
 
     <!--
     By default uwsgi outputs data (byte count, header count) etc to stderr on each request
