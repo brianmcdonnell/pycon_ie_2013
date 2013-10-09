@@ -24,7 +24,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     dispatcher = Dispatcher()
-    dispatcher.connection
     dispatcher.connect(name='test_hello', route='/hello', controller=Greeting(), action='hello')
 
     if args.connection.lower() == 'tcp':
