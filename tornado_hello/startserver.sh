@@ -6,4 +6,4 @@ source ./env/bin/activate
 # Alternatively, we could have used a pidproxy program to relay signals
 # to the command being executed.
 #     e.g. https://github.com/Supervisor/supervisor/blob/master/supervisor/pidproxy.py
-exec ./hello.py --unix_socket /tmp/tornado_hello.sock
+exec ./hello.py --unix_socket=/tmp/tornado_hello.sock
