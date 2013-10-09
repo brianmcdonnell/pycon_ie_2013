@@ -11,11 +11,12 @@ application = tornado.web.Application([
     (r"/hello", HelloHandler),
 ])
 
-define('listen_address', group='webserver', default='127.0.0.1', help='Listen address')
-define('listen_port', group='webserver', default=8080, help='Listen port')
-define('unix_socket', group='webserver', default=None, help='Path to unix socket to bind')
+define('listen_address', default='127.0.0.1', help='Listen address')
+define('listen_port', default=8080, help='Listen port')
+define('unix_socket', default=None, help='Path to unix socket to bind')
 
 if __name__ == "__main__":
+    tornado.options.parse_command_line()
     if options.unix_socket:
         from tornado.netutil import bind_unix_socket
         from tornado.httpserver import HTTPServer
