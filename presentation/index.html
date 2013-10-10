@@ -82,18 +82,69 @@
 					<h2>Measuring Throughput</h2>
 					<h3>Setup test-target server</h3>
 					<ul>
-						<li>Install software to test (Nginx/Django)</li>
+						<li>Setup Nginx, uWSGI &amp; Python app)</li>
+						<li>Disable logging and debug modes in app</li>
 						<li>Stop all unrequired services (munin, cron jobs)</li>
-						<li>Note machine specs (cpu, mem)</li>
+						<li>Ensure file handles, listen backlogs &amp; tcp_max_syn_backlog are big enough</li>
 					</ul>
 					<p style="margin-top: 1em" margin-top>AWS Small instance can be handy (1 ECU)</p>
+					</section>
+
+				<section>
+					<h2>File Handles</h2>
+					<h3>/etc/security/limits.conf</h3>
+					<pre>
+						<code data-trim style="font-size: 18px; margin-top: 20px;">
+*                hard    nofile          131072
+*                soft    nofile          65536						
+						</code>
+					</pre>
+
+					<h3>In terminal for current session</h3>
+					<pre>
+						<code data-trim style="font-size: 18px; margin-top: 20px;">
+$ ulimit -Hn 131072
+$ ulimit -Sn 65536
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Socket Backlog</h2>
+					<h3>/etc/sysctl.conf</h3>
+					<pre>
+						<code data-trim style="font-size: 18px; margin-top: 20px;">
+net.core.somaxconn = 8191
+net.ipv4.tcp_max_syn_backlog = 8191
+						</code>
+					</pre>
+
+					<h3>In terminal for current session</h3>
+					<pre>
+						<code data-trim style="font-size: 18px; margin-top: 20px;">
+sudo sysctl -w net.core.somaxconn=8191
+sudo sysctl -w net.ipv4.tcp_max_syn_backlog=8191
+						</code>
+					</pre>
+				</section>
+				
+				<section>
+					<h2>Verify changes</h2>
+					<h3></h3>
+					<pre>
+						<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+$ cat /proc/sys/fs/file-max
+$ ulimit -Hn
+$ ulimit -Sn
+$ cat /proc/sys/net/ipv4/tcp_max_syn_backlog
+$ cat /proc/sys/net/core/somaxconn
+						</code>
+					</pre>
 				</section>
 
 				<section>
 					<h2>Measuring Throughput</h2>
 					<h3>Drive load with Weighttp</h3>
-					<ul>
-					</ul>
 					<pre>
 						<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
 $ weighttp -k -c 1 -n 1000 http://target.pycon.ie/a.gif
