@@ -20,7 +20,7 @@ if __name__ == "__main__":
     parser.add_argument('-s', '--sock-file', dest='sock_file', action='store', default='/tmp/twisted_hello.sock', help='')
     parser.add_argument('-i', '--interface', dest='interface', action='store', default='127.0.0.1', help='The interface to listen on')
     parser.add_argument('-p', '--port', type=int, dest='port', action='store', default=8080, help='The port to listen on')
-    parser.add_argument('-b', '--backlog-size', type=int, dest='backlog_size', action='store', default=64, help='The socket listen backlog')
+    parser.add_argument('-b', '--backlog-size', type=int, dest='backlog_size', action='store', default=8191, help='The socket listen backlog')
     args = parser.parse_args()
 
     dispatcher = Dispatcher()
