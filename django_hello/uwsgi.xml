@@ -1,27 +1,28 @@
 <uwsgi>
-    <!-- This must match the nginx source connection config -->
-    <!--<socket>0.0.0.0:20000</socket>-->
-    <!--<protocol>uwsgi</protocol>-->
-    <workers>1</workers>
-    <threads>1</threads>
+	<!-- This must match the nginx source connection config -->
+	<!--<socket>0.0.0.0:20000</socket>-->
+	<!--<protocol>uwsgi</protocol>-->
+	<workers>1</workers>
+	<threads>1</threads>
+	<listen>8191</listen>
 
-   <!-- Clean sock & pid files upon exit -->
-   <vacuum />
+	<!-- Clean sock & pid files upon exit -->
+	<vacuum />
 
-   <chdir>/home/ubuntu/pycon_ie_2013/django_hello</chdir>
+	<chdir>/home/ubuntu/pycon_ie_2013/django_hello</chdir>
 
-    <!--
-    By default uwsgi outputs data (byte count, header count) etc to stderr on each request
-    This config disables that output, but still allows wsgi app to write to stderr.
-    -->
-    <disable-logging />
+	<!--
+	By default uwsgi outputs data (byte count, header count) etc to stderr on each request
+	This config disables that output, but still allows wsgi app to write to stderr.
+	-->
+	<disable-logging />
 
-    <!-- uwsgi config understands what a virtualenv is and will insert it into the path. -->
-    <virtualenv>/home/ubuntu/pycon_ie_2013/django_hello/env</virtualenv>
+	<!-- uwsgi config understands what a virtualenv is and will insert it into the path. -->
+	<virtualenv>/home/ubuntu/pycon_ie_2013/django_hello/env</virtualenv>
 
-    <pythonpath>/home/ubuntu/pycon_ie_2013/django_hello</pythonpath>
+	<pythonpath>/home/ubuntu/pycon_ie_2013/django_hello</pythonpath>
 
-    <!-- Specify the mountpoint and django module that will handle uwsgi requests -->
-    <module>hello.wsgi</module>
+	<!-- Specify the mountpoint and django module that will handle uwsgi requests -->
+	<module>hello.wsgi</module>
 </uwsgi>
 

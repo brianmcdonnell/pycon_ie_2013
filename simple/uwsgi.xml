@@ -4,6 +4,7 @@
     <!--<protocol>uwsgi</protocol>-->
     <workers>1</workers>
     <threads>1</threads>
+	<listen>8191</listen>
 
     <!-- Clean sock & pid files upon exit -->
     <vacuum />
