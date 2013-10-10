@@ -143,6 +143,40 @@ $ cat /proc/sys/net/core/somaxconn
 				</section>
 
 				<section>
+					<h2>Nginx Listen Backlog</h2>
+					<pre>
+						<code data-trim style="font-size: 18px; margin-top: 20px;">
+server {
+	listen 80 backlog=8191;
+	server_name server.pycon.ie;
+	
+	location /hello {
+		...
+	}
+	...
+}
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>uWSGI Listen Backlog</h2>
+					<h3>app-specific xml config</h3>
+					<pre>
+						<code data-trim style="font-size: 18px; margin-top: 20px;">
+<uwsgi>
+	<socket>0.0.0.0:20000</socket>
+
+	<workers>1</workers>
+	<threads>1</threads>
+
+	<listen>8191</listen>
+</uwsgi>
+						</code>
+					</pre>
+				</section>
+
+				<section>
 					<h2>Measuring Throughput</h2>
 					<h3>Drive load with Weighttp</h3>
 					<pre>
