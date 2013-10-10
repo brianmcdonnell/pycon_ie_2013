@@ -14,6 +14,7 @@ application = tornado.web.Application([
 define('listen_address', default='127.0.0.1', help='Listen address')
 define('listen_port', default=8080, help='Listen port')
 define('unix_socket', default=None, help='Path to unix socket to bind')
+define('backlog_size', default=8191, help='Size of the listen backlog')
 
 if __name__ == "__main__":
     tornado.options.parse_command_line()
@@ -21,7 +22,7 @@ if __name__ == "__main__":
         from tornado.netutil import bind_unix_socket
         from tornado.httpserver import HTTPServer
         server = HTTPServer(application)
-        socket = bind_unix_socket(options.unix_socket)
+        socket = bind_unix_socket(options.unix_socket, backlog=options.backlog_size)
         server.add_socket(socket)
         print "Listening on %s" % options.unix_socket
     else:
