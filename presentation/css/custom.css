@@ -10,17 +10,16 @@
 .reveal table.numeric td,
 .reveal table td.numeric {
 	text-align: right; 
-	/*background-color: red;*/
 }
 
 .reveal section img.warning-micro-opt {
-	/*
-	background:url("../images/warning_micro_opt.jpg");
-	background-position:center;
-	background-size: contain;
-	background-repeat: no-repeat;
-	*/
 	border: none;
+}
+
+html.title-busy-road body {
+	background:url("../images/busy_road.jpg");
+	background-position:center;
+	background-size: 100%;
 }
 
 html.grass-scissors body {
@@ -31,19 +30,31 @@ html.grass-scissors body {
 
 html.htop_x2 body {
 	background:url("../images/htop_x2.jpg");
-	background-position:center;
+	background-position: center;
 	background-size: 100%;
 }
 
 html.ping-pong body {
 	background:url("../images/kitten-ping-pong.gif");
-	background-position:center;
+	background-position: center;
 	background-size: 100%;
 }
 
+html.who-cares body {
+	background:url("../images/who_cares.jpg");
+	background-position:center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
 .reveal .frosted {
 	padding: 1em;
 	-webkit-border-radius: 25px;
 	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.reveal .dark-frosted {
+	padding: 1em;
+	-webkit-border-radius: 25px;
+	background-color: rgba(0, 0, 0, 0.80);
 }
 

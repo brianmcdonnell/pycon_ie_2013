@@ -39,36 +39,58 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<section>
-					<h1>Maximum Throughput</h1>
-					<h3>(Baseline costs of web frameworks)</h3>
-					<p>
-					Brian McDonnell, CTO at <a href="http://pagefair.com">PageFair.com</a>
-					</p>
-					<ul>
-						<li>Twitter: <a href="http://twitter.com/mcdonnellb">@mcdonnellb</a></li>
-						<li>Github: <a href="http://github.com/brianmcdonnell">github.com/brianmcdonnell</a></li>
-					</ul>
+				<section data-state="title-busy-road">
+					<div class="dark-frosted">
+						<h1>Maximum Throughput</h1>
+						<h3>(Baseline costs of web frameworks)</h3>
+						<p>
+						Brian McDonnell, CTO at <a href="http://pagefair.com">PageFair.com</a>
+						</p>
+						<ul>
+							<li>Twitter: <a href="http://twitter.com/mcdonnellb">@mcdonnellb</a></li>
+							<li>Github: <a href="http://github.com/brianmcdonnell">github.com/brianmcdonnell</a></li>
+						</ul>
+					</div>
 				</section>
 
 				<section>
-					<h2>Typical Stack</h2>
+					<h2>Typical Production Stack</h2>
 					<h3></h3>
 					<img src="./images/diagrams/typical_stack.png" />
 				</section>
 
 				<section>
-					<h2>What does it cost<h2>
-					<h3>before the request hits your code?</h2>
-					<img src="./images/diagrams/typical_stack.png" />
+					<h2>Minimum WSGI Implementation<h2>
+					<img src="./images/diagrams/min_wsgi_stack.png" />
 				</section>
 
 				<section>
-					<img class="warning-micro-opt" src="./images/warning_micro_opt.png" />
+					<h2>Add a Framework to the Mix<h2>
+					<h3>What's the cost before it hits your code?</h2>
+					<img src="./images/diagrams/django_flask.png" />
 				</section>
 
-				<section data-state="grass-scissors">
+				<section>
+					<h2>What computation is occurring??<h2>
+					<img src="./images/diagrams/django_flask_work.png" />
 				</section>
+
+
+				<section data-state="grass-scissors">
+					<img class="warning-micro-opt fragment" src="./images/warning_micro_opt.png" />
+				</section>
+				
+				<section data-state="who-cares">
+					<div class="fragment dark-frosted">
+						<h3>Anyone with high-frequency, low computation requests</h3>
+						<ul>
+							<li>Analytics (e.g. PageFair)</li>
+							<li>Tracking pixels</li>
+							<li>Real-time geo-positioning data</li>
+						</ul>	
+					</div>
+				</section>
+
 
 
 				<section>
