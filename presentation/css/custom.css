@@ -13,11 +13,20 @@
 	/*background-color: red;*/
 }
 
-html.warning-micro-opt body {
+.reveal section img.warning-micro-opt {
+	/*
 	background:url("../images/warning_micro_opt.jpg");
 	background-position:center;
 	background-size: contain;
 	background-repeat: no-repeat;
+	*/
+	border: none;
+}
+
+html.grass-scissors body {
+	background:url("../images/grass_scissors.jpg");
+	background-position:center;
+	background-size: 100%;
 }
 
 html.htop_x2 body {
