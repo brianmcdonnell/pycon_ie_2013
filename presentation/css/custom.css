@@ -13,6 +13,12 @@
 	/*background-color: red;*/
 }
 
+html.warning-micro-opt body {
+	background:url("../images/warning_micro_opt.jpg");
+	background-position:center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
 
 html.htop_x2 body {
 	background:url("../images/htop_x2.jpg");
