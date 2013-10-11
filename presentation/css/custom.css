@@ -46,6 +46,14 @@ html.who-cares body {
 	background-size: contain;
 	background-repeat: no-repeat;
 }
+
+html.cycling body {
+	background:url("../images/cycling.jpg");
+	background-position:center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
 .reveal .frosted {
 	padding: 1em;
 	-webkit-border-radius: 25px;
