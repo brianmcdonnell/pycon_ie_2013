@@ -30,7 +30,7 @@ if __name__ == "__main__":
         reactor.listenTCP(args.port, server.Site(dispatcher), args.backlog_size, interface=args.interface)
         print "Listening on http://%s:%s" % (args.interface, args.port)
     else:
-        reactor.listenUNIX(args.sock_file, server.Site(dispatcher), wantPID=True)
+        reactor.listenUNIX(args.sock_file, server.Site(dispatcher), args.backlog_size, wantPID=True)
         print "Listening on unix:%s" % args.sock_file
     reactor.run()
 
