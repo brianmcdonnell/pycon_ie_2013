@@ -12,6 +12,11 @@
 	text-align: right; 
 }
 
+.reveal table th {
+	background-color: #303030;
+	text-color: #cccccc;
+}
+
 .reveal section img.warning-micro-opt {
 	border: none;
 }

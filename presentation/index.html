@@ -240,18 +240,47 @@ server {
 					</pre>
 				</section>
 
+				<section data-state="ping-pong" data-background-transition="slide">
+					<div class="fragment frosted">
+						<h2>First Test</h2>
+						<div class="fragment">
+							<img src="./images/weighttp_vs_nginx.png" />	
+							<ul>
+								<li>Weighttp runs a number of 'clients'</li>
+								<li>Each client requests a URL from target server</li>
+								<li>Clients wait for a response before issuing next request</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+
+				<section>
+					<h2>Weighttp Vs Nginx</h2>
+					<table>
+						<thead>
+							<tr><th></th><th>Weighttp</th><th>Nginx</th></tr>
+						</thead>
+						<tbody>
+							<tr><th>Language</th><td>C</td><td>C</td></tr>
+							<tr><th>Concurrency Model</th><td>Single-threaded, evented</td><td>Single-threaded, evented</td></tr>
+							<tr><th>Supports</th><td>Reduced HTTP</td><td>Full HTTP</td></tr>
+						</tbody>
+					</table>
+				</section>
+
 				<section>
 					<h2>Using Weighttp</h2>
 					<pre>
-						<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+						<code data-trim style="font-size: 20px; margin-top: 20px;">
 $ weighttp -k -c 1 -n 1000 http://server.pycon.ie/hello
 						</code>
 					</pre>
 					<ul style="display: block">
-						<li>Ramp up concurrency</li>
+						<li>Increase concurrent clients</li>
 					</ul>
 					<pre>
-						<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+						<code data-trim style="font-size: 20px; margin-top: 20px;">
 $ weighttp -k -c 2 -n 1000 http://server.pycon.ie/hello
 ...
 $ weighttp -k -c 4 -n 2000 http://server.pycon.ie/hello
@@ -260,34 +289,6 @@ $ weighttp -k -c 8 -n 4000 http://server.pycon.ie/hello
 ... etc...
 						</code>
 					</pre>
-					</section>
-				
-				<section data-state="ping-pong" data-background-transition="slide">
-					<div class="fragment frosted">
-						<h2>First Test</h2>
-						<h3>Weighttp---|--->Nginx</h3>
-						<ul>
-							<li>2 AWS Small Instances</li>
-							<li>Same Availability Zone</li>
-						</ul>
-						<p>
-						Add diagram showing both machines (ping-pong background)
-						</p>
-					</div>
-				</section>
-					
-				<section>
-					<h2>Weighttp Vs Nginx</h2>
-					<table>
-						<thead>
-							<tr><th></th><th>Weighttp</th><th>Nginx</th></tr>
-						</thead>
-						<tbody>
-							<tr><td>Language</td><td>C</td><td>C</td></tr>
-							<tr><td>Concurrency Model</td><td>Single-threaded, evented</td><td>Single-threaded, evented</td></tr>
-							<tr><td>Supports</td><td>Reduced HTTP</td><td>Full HTTP</td></tr>
-						</tbody>
-					</table>
 				</section>
 
 				<section>
