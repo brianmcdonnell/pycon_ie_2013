@@ -54,6 +54,29 @@ html.cycling body {
 	background-repeat: no-repeat;
 }
 
+html.servers body {
+	background:url("../images/servers.jpg");
+	background-position:center;
+	background-size: 100%;
+}
+
+html.mortal-kombat body {
+	background:url("../images/mortal_kombat.gif");
+	background-position:center;
+	background-size: 100%;
+}
+
+html.bttf-amp body {
+	background:url("../images/bttf_amp.jpg");
+	background-position:center;
+	background-size: 100%;
+}
+
+html.switch-off body {
+	background:url("../images/switch_off.jpg");
+	background-position:center;
+	background-size: 100%;
+}
 .reveal .frosted {
 	padding: 1em;
 	-webkit-border-radius: 25px;

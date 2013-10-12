@@ -105,10 +105,8 @@
 
 				<section>
 					<h2>Measuring Throughput</h2>
-					<h3>It's Fun!</h3>
 					<ul>
-						<li>Drive lots of traffic at server</li>
-						<li>Test-server should *never* be waiting for work to do.</li>
+						<li>Use weighttp to offer load to the server</li>
 						<li>Throughput asymptotes (or worse) at resource exhaustion</li>
 						<ul>
 							<li style="color: lightgreen;">CPU</li>
@@ -118,29 +116,38 @@
 					</ul>
 				</section>
 
-				<section>
-					<h2>Throughput Vs Performance</h2>
-					<h3>Same-same, but Different</h3>
-					<ul>
-						<li>Assuming CPU-bound</li>
-						<li><span style="font-size: 1.5em;">&darr;</span>computational-cost == <span style="font-size: 1.5em;">&uarr;</span>throughput</li>
-							<li><span style="font-size: 1.5em;">&darr;</span>io-time =/= <span style="font-size: 1.5em;">&uarr;</span>throughput</li>
-						<li>Time-per-request can be poor, while throughput is great</li>
 
-					</ul>
+				<section data-state="servers">
+					<h2>Setup 2 AWS Small Instances</h2>
+					<h3>and watch them fight...</h3>
+					<img src="./images/two_aws_instances.png" />
+				</section>
+				
+				<section data-state="mortal-kombat">
+					<h2>to exhaustion</h2>
+				</section>
+				
+				<section data-state="switch-off">
+					<div class="fragment frosted">
+						<h2>Disable non-essential services</h2>
+						<ul>
+							<li>Disable per-request logging</li>
+							<li>Disable any debug modes</li>
+							<li>Stop all unrequired services (munin, cron jobs)</li>
+						</ul>
+					</div>
 				</section>
 
-				<section>
-					<h2>Measuring Throughput</h2>
-					<h3>Setup test-target server</h3>
-					<ul>
-						<li>Setup Nginx, uWSGI &amp; Python app)</li>
-						<li>Disable logging and debug modes in app</li>
-						<li>Stop all unrequired services (munin, cron jobs)</li>
-						<li>Ensure file handles, listen backlogs &amp; tcp_max_syn_backlog are big enough</li>
-					</ul>
-					<p style="margin-top: 1em" margin-top>AWS Small instance can be handy (1 ECU)</p>
-					</section>
+				<section data-state="bttf-amp">
+					<div class="fragment frosted">
+						<h2>Lots of requests, sockets, file handles</h2>
+						<ul>
+							<li>Increase file handles</li>
+							<li>Increase listen backlogs</li>
+							<li>Increase somaxconn &amp; tcp_max_syn_backlog</li>
+						</ul>
+					</div>
+				</section>
 
 				<section>
 					<h2>File Handles</h2>
@@ -195,17 +202,22 @@ $ cat /proc/sys/net/core/somaxconn
 				</section>
 
 				<section>
-					<h2>Nginx Listen Backlog</h2>
+					<h2>Nginx Config</h2>
 					<pre>
 						<code data-trim style="font-size: 18px; margin-top: 20px;">
+worker_processes 1;
+
+events {
+	worker_connections 8191;
+}
+
 server {
 	listen 80 backlog=8191;
 	server_name server.pycon.ie;
 	
 	location /hello {
-		...
+		return 200 'Hello from nginx';
 	}
-	...
 }
 						</code>
 					</pre>
@@ -229,11 +241,10 @@ server {
 				</section>
 
 				<section>
-					<h2>Measuring Throughput</h2>
-					<h3>Drive load with Weighttp</h3>
+					<h2>Using Weighttp</h2>
 					<pre>
 						<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-$ weighttp -k -c 1 -n 1000 http://target.pycon.ie/a.gif
+$ weighttp -k -c 1 -n 1000 http://server.pycon.ie/hello
 						</code>
 					</pre>
 					<ul style="display: block">
@@ -241,22 +252,14 @@ $ weighttp -k -c 1 -n 1000 http://target.pycon.ie/a.gif
 					</ul>
 					<pre>
 						<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-$ weighttp -k -c 2 -n 1000 http://target.pycon.ie/a.gif
+$ weighttp -k -c 2 -n 1000 http://server.pycon.ie/hello
 ...
-$ weighttp -k -c 4 -n 1000 http://target.pycon.ie/a.gif
+$ weighttp -k -c 4 -n 2000 http://server.pycon.ie/hello
 ...
-$ weighttp -k -c 8 -n 1000 http://target.pycon.ie/a.gif
+$ weighttp -k -c 8 -n 4000 http://server.pycon.ie/hello
 ... etc...
 						</code>
 					</pre>
-					</section>
-
-				<section>
-					<h2>Ultimate Test</h2>
-					<h3>Weighttp---|--->Nginx/UWsgi/Python Web Framework</h3>
-					<p>
-					Add diagram showing configurations
-					</p>
 					</section>
 				
 				<section data-state="ping-pong" data-background-transition="slide">
@@ -302,7 +305,7 @@ $ weighttp -k -c 8 -n 1000 http://target.pycon.ie/a.gif
 						<h2>Concurrency=1 (Sequential Requests)</h2>
 						<pre>
 							<code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-$ weighttp -k -c 1 -n 1000 http://target.pycon.ie/a.gif
+$ weighttp -k -c 1 -n 1000 http://server.pycon.ie/hello
 							</code>
 						</pre>
 
@@ -372,6 +375,27 @@ $ weighttp -k -c 1 -n 1000 http://target.pycon.ie/a.gif
 						</small>
 					</div>
 				</section>
+
+				<section>
+					<h2>Ultimate Test</h2>
+					<h3>Weighttp---|--->Nginx/UWsgi/Python Web Framework</h3>
+					<p>
+					Add diagram showing configurations
+					</p>
+					</section>
+
+
+				<section>
+					<h2>Throughput Vs Performance</h2>
+					<ul>
+						<li>Assuming CPU-bound</li>
+						<li><span style="font-size: 1.5em;">&darr;</span>computational-cost == <span style="font-size: 1.5em;">&uarr;</span>throughput</li>
+							<li><span style="font-size: 1.5em;">&darr;</span>io-time =/= <span style="font-size: 1.5em;">&uarr;</span>throughput</li>
+						<li>Time-per-request can be poor, while throughput is great</li>
+
+					</ul>
+				</section>
+				
 
 
 				<section>
