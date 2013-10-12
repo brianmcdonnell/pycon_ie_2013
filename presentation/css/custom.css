@@ -117,6 +117,14 @@ html.non-py-async-graph body {
 	background-size: 100%;
 	background-repeat: no-repeat;
 }
+
+html.all-graphs body {
+	background:url("../images/charts/01_all_graphs.png");
+	background-position:center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
 .reveal .frosted {
 	padding: 1em;
 	-webkit-border-radius: 25px;
