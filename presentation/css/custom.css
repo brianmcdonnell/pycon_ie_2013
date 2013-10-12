@@ -1,3 +1,7 @@
+.reveal table td.highlight {
+	color: yellow;
+}
+
 .reveal table { 
 	display: inline-block;
 	border-collapse: collapse;
@@ -6,6 +10,9 @@
 .reveal table td { 
 	border: 1px solid gray;
 	padding: 0.25em;
+}
+.reveal table.fixedcols th {
+	width: 6em;
 }
 .reveal table.numeric td,
 .reveal table td.numeric {

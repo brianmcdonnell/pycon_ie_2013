@@ -120,7 +120,7 @@
 				<section data-state="servers">
 					<h2>Setup 2 AWS Small Instances</h2>
 					<h3>and watch them fight...</h3>
-					<img src="./images/two_aws_instances.png" />
+					<img src="./images/diagrams/two_aws_instances.png" />
 				</section>
 				
 				<section data-state="mortal-kombat">
@@ -201,50 +201,11 @@ $ cat /proc/sys/net/core/somaxconn
 					</pre>
 				</section>
 
-				<section>
-					<h2>Nginx Config</h2>
-					<pre>
-						<code data-trim style="font-size: 18px; margin-top: 20px;">
-worker_processes 1;
-
-events {
-	worker_connections 8191;
-}
-
-server {
-	listen 80 backlog=8191;
-	server_name server.pycon.ie;
-	
-	location /hello {
-		return 200 'Hello from nginx';
-	}
-}
-						</code>
-					</pre>
-				</section>
-
-				<section>
-					<h2>uWSGI Listen Backlog</h2>
-					<h3>app-specific xml config</h3>
-					<pre>
-						<code data-trim style="font-size: 18px; margin-top: 20px;">
-<uwsgi>
-	<socket>0.0.0.0:20000</socket>
-
-	<workers>1</workers>
-	<threads>1</threads>
-
-	<listen>8191</listen>
-</uwsgi>
-						</code>
-					</pre>
-				</section>
-
 				<section data-state="ping-pong" data-background-transition="slide">
 					<div class="fragment frosted">
 						<h2>First Test</h2>
 						<div class="fragment">
-							<img src="./images/weighttp_vs_nginx.png" />	
+							<img src="./images/diagrams/weighttp_vs_nginx.png" />	
 							<ul>
 								<li>Weighttp runs a number of 'clients'</li>
 								<li>Each client requests a URL from target server</li>
@@ -270,6 +231,29 @@ server {
 				</section>
 
 				<section>
+					<h2>Nginx Config</h2>
+					<pre>
+						<code data-trim style="font-size: 18px; margin-top: 20px;">
+worker_processes 1;
+
+events {
+	worker_connections 8191;
+}
+
+server {
+	listen 80 backlog=8191;
+	server_name server.pycon.ie;
+	
+	location /hello {
+		return 200 'Hello from nginx';
+	}
+}
+						</code>
+					</pre>
+				</section>
+
+
+				<section>
 					<h2>Using Weighttp</h2>
 					<pre>
 						<code data-trim style="font-size: 20px; margin-top: 20px;">
@@ -278,6 +262,8 @@ $ weighttp -k -c 1 -n 1000 http://server.pycon.ie/hello
 					</pre>
 					<ul style="display: block">
 						<li>Increase concurrent clients</li>
+						<li>Monitor CPU saturation</li>
+						<li>Monitor thoughput asymptoting</li>
 					</ul>
 					<pre>
 						<code data-trim style="font-size: 20px; margin-top: 20px;">
@@ -331,33 +317,40 @@ $ weighttp -k -c 1 -n 1000 http://server.pycon.ie/hello
 					</section>
 
 				</section>
-
+				
 				<section>
-					<h2>Results</h2>
-					<h3>Weighttp---|--->Nginx</h3>
-					<table class="numeric">
+					<h2>Results: Weighttp---|--->Nginx</h2>
+					<table class="numeric fixedcols">
 						<thead>
-							<tr><th>rig concurrency</th><th>q/s</th><th>rig cpu</th><th>test cpu</th></tr>
+							<tr>
+								<th></th><th></th>
+								<th colspan="8">Concurrent Clients</th>
+							</tr>
+							<tr>
+								<th></th><th></th>
+								<th>1</th><th>2</th><th>4</th><th>8</th>
+								<th>16</th><th>32</th><th>64</th><th>128</th>
+							</tr>
 						</thead>
 						<tbody>
-							<tr><td>1</td><td>250</td><td>1%</td><td>7%</td></tr>
-							<tr><td>2</td><td>1500</td><td>2%</td><td>22%</td></tr>
-							<tr><td>4</td><td>2000</td><td>4%</td><td>65%</td></tr>
-							<tr><td>8</td><td>2500</td><td>7%</td><td>99%</td></tr>
+							<tr>
+								<th>Nginx</th><th>q/s</th>
+								<td>459</td><td>899</td><td>1747</td><td>2155</td>
+								<td>2976</td><td>3434</td><td class="highlight">3780</td><td>3755</td>
+							</tr>
 						</tbody>
 					</table>
 				</section>
 				
 				<section>
-					<h2>Results</h2>
-					<h3>Weighttp---|--->Nginx</h3>
-					<p>Show graph of results</p>
+					<h2>Results: Weighttp---|--->Nginx</h2>
+					<img src="./images/charts/nginx.png" />	
 				</section>
 
 				<section data-background="./images/tron_user_vs_system.jpg" data-background-transition="slide">
-					<div class="frosted">
-						<h2>Nginx Work</h2>
-						<h3>User vs System</h3>
+					<div class="fragment dark-frosted">
+						<h2>User vs System</h2>
+						<h3>How did Nginx saturate the CPU?</h3>
 						<small>
 							<table class="fragment">
 								<thead>
@@ -376,6 +369,27 @@ $ weighttp -k -c 1 -n 1000 http://server.pycon.ie/hello
 						</small>
 					</div>
 				</section>
+
+
+
+				<section>
+					<h2>uWSGI Listen Backlog</h2>
+					<h3>app-specific xml config</h3>
+					<pre>
+						<code data-trim style="font-size: 18px; margin-top: 20px;">
+<uwsgi>
+	<socket>0.0.0.0:20000</socket>
+
+	<workers>1</workers>
+	<threads>1</threads>
+
+	<listen>8191</listen>
+</uwsgi>
+						</code>
+					</pre>
+				</section>
+
+
 
 				<section>
 					<h2>Ultimate Test</h2>
