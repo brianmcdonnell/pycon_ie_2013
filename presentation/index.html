@@ -82,7 +82,7 @@
 							<li>Analytics (e.g. PageFair)</li>
 							<li>Tracking pixels</li>
 							<li>Real-time geo-positioning data</li>
-						</ul>	
+						</ul>
 					</div>
 				</section>
 
@@ -97,11 +97,31 @@
 					</div>
 				</section>
 
+				<section>
+					<h2>Python web frameworks?</h2>
+					<img src="./images/diagrams/web_framework_stacks.png" />
+				</section>
+
+				<section>
+					<h2>Python Async 'Frameworks'</h2>
+					<img src="./images/diagrams/async_framework_stacks.png" />
+				</section>
+
+				<section>
+					<h2>Non-python Async 'Frameworks'</h2>
+					<img src="./images/diagrams/all_framework_stacks.png" />
+				</section>
+
+				<section>
+					<h2>Interconnecting Socket Types &amp; Protocols</h2>
+					<img src="./images/diagrams/all_framework_stacks_with_protocols.png" />
+				</section>
+
 
 				<section data-state="grass-scissors">
 					<img class="warning-micro-opt fragment" src="./images/warning_micro_opt.png" />
 				</section>
-				
+
 
 				<section>
 					<h2>Measuring Throughput</h2>
@@ -122,11 +142,11 @@
 					<h3>and watch them fight...</h3>
 					<img src="./images/diagrams/two_aws_instances.png" />
 				</section>
-				
+
 				<section data-state="mortal-kombat">
 					<h2>to exhaustion</h2>
 				</section>
-				
+
 				<section data-state="switch-off">
 					<div class="fragment frosted">
 						<h2>Disable non-essential services</h2>
@@ -155,7 +175,7 @@
 					<pre>
 						<code data-trim style="font-size: 18px; margin-top: 20px;">
 *                hard    nofile          131072
-*                soft    nofile          65536						
+*                soft    nofile          65536
 						</code>
 					</pre>
 
@@ -186,7 +206,7 @@ sudo sysctl -w net.ipv4.tcp_max_syn_backlog=8191
 						</code>
 					</pre>
 				</section>
-				
+
 				<section>
 					<h2>Verify changes</h2>
 					<h3></h3>
@@ -205,7 +225,7 @@ $ cat /proc/sys/net/core/somaxconn
 					<div class="fragment frosted">
 						<h2>First Test</h2>
 						<div class="fragment">
-							<img src="./images/diagrams/weighttp_vs_nginx.png" />	
+							<img src="./images/diagrams/weighttp_vs_nginx.png" />
 							<ul>
 								<li>Weighttp runs a number of 'clients'</li>
 								<li>Each client requests a URL from target server</li>
@@ -243,7 +263,7 @@ events {
 server {
 	listen 80 backlog=8191;
 	server_name server.pycon.ie;
-	
+
 	location /hello {
 		return 200 'Hello from nginx';
 	}
@@ -317,7 +337,7 @@ $ weighttp -k -c 1 -n 1000 http://server.pycon.ie/hello
 					</section>
 
 				</section>
-				
+
 				<section>
 					<h2>Results: Weighttp---|--->Nginx</h2>
 					<table class="numeric fixedcols">
@@ -341,10 +361,10 @@ $ weighttp -k -c 1 -n 1000 http://server.pycon.ie/hello
 						</tbody>
 					</table>
 				</section>
-				
+
 				<section>
 					<h2>Results: Weighttp---|--->Nginx</h2>
-					<img src="./images/charts/nginx.png" />	
+					<img src="./images/charts/nginx.png" />
 				</section>
 
 				<section data-background="./images/tron_user_vs_system.jpg" data-background-transition="slide">
@@ -369,13 +389,13 @@ $ weighttp -k -c 1 -n 1000 http://server.pycon.ie/hello
 						</small>
 					</div>
 				</section>
-				
+
 				<section>
-					<h2>Test 2: Nginx-->uwsgi-python</h2>	
+					<h2>Test 2: Nginx-->uwsgi-python</h2>
 					<ul>
-						<li>http vs fastcgi vs uwsgi protocols</li>	
+						<li>http vs fastcgi vs uwsgi protocols</li>
 						<li>tcp vs unix sockets</li>
-					</ul>	
+					</ul>
 					<img src="./images/diagrams/weighttp_vs_python_wsgi.png" />
 				</section>
 
@@ -403,7 +423,7 @@ $ weighttp -k -c 1 -n 1000 http://server.pycon.ie/hello
 					<h2>Test Python Web Frameworks</h2>
 					<img src="./images/diagrams/web_framework_stacks.png" />
 				</section>
-				
+
 				<section data-state="py-web-frameworks-graph">
 				</section>
 
@@ -411,7 +431,7 @@ $ weighttp -k -c 1 -n 1000 http://server.pycon.ie/hello
 					<h2>Test Python Async Frameworks</h2>
 					<img src="./images/diagrams/async_framework_stacks.png" />
 				</section>
-				
+
 				<section data-state="py-async-graph">
 				</section>
 
@@ -419,7 +439,7 @@ $ weighttp -k -c 1 -n 1000 http://server.pycon.ie/hello
 					<h2>Test Non-python Async Frameworks</h2>
 					<img src="./images/diagrams/all_framework_stacks.png" />
 				</section>
-				
+
 				<section data-state="non-py-async-graph">
 				</section>
 
