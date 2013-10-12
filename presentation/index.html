@@ -369,8 +369,15 @@ $ weighttp -k -c 1 -n 1000 http://server.pycon.ie/hello
 						</small>
 					</div>
 				</section>
-
-
+				
+				<section>
+					<h2>Test 2: Nginx-->uwsgi-python</h2>	
+					<ul>
+						<li>http vs fastcgi vs uwsgi protocols</li>	
+						<li>tcp vs unix sockets</li>
+					</ul>	
+					<img src="./images/diagrams/weighttp_vs_python_wsgi.png" />
+				</section>
 
 				<section>
 					<h2>uWSGI Listen Backlog</h2>
@@ -389,15 +396,33 @@ $ weighttp -k -c 1 -n 1000 http://server.pycon.ie/hello
 					</pre>
 				</section>
 
-
+				<section data-state="skel1-graph">
+				</section>
 
 				<section>
-					<h2>Ultimate Test</h2>
-					<h3>Weighttp---|--->Nginx/UWsgi/Python Web Framework</h3>
-					<p>
-					Add diagram showing configurations
-					</p>
-					</section>
+					<h2>Test Python Web Frameworks</h2>
+					<img src="./images/diagrams/web_framework_stacks.png" />
+				</section>
+				
+				<section data-state="py-web-frameworks-graph">
+				</section>
+
+				<section>
+					<h2>Test Python Web Frameworks</h2>
+					<img src="./images/diagrams/async_framework_stacks.png" />
+				</section>
+				
+				<section data-state="py-async-graph">
+				</section>
+
+				<section>
+					<h2>Test Non-python Async Frameworks</h2>
+					<img src="./images/diagrams/all_framework_stacks.png" />
+				</section>
+				
+				<section data-state="non-py-async-graph">
+				</section>
+
 
 
 				<section>

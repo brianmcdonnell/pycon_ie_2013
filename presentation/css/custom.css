@@ -89,6 +89,34 @@ html.switch-off body {
 	background-position:center;
 	background-size: 100%;
 }
+
+html.skel1-graph body {
+	background:url("../images/charts/02_py_skel1_graph.png");
+	background-position:center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+html.py-web-frameworks-graph body {
+	background:url("../images/charts/04_py_frameworks_graph.png");
+	background-position:center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+html.py-async-graph body {
+	background:url("../images/charts/05_py_async_graph.png");
+	background-position:center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+html.non-py-async-graph body {
+	background:url("../images/charts/06_non_py_async_graph.png");
+	background-position:center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
 .reveal .frosted {
 	padding: 1em;
 	-webkit-border-radius: 25px;
