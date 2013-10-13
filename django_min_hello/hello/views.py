@@ -43,7 +43,7 @@ for n in xrange(1000):
 
 def lookup(request):
     count = 0
-    for n in range(1000):
+    for n in range(50000):
         if n in s:
             count += 1
     return HttpResponse("Did lookups, found: %s" % count)
