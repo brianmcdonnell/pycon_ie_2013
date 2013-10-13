@@ -397,12 +397,88 @@ server {
 					</pre>
 				</section>
 
+				<section>
+					<h2>Results: Weighttp-->Nginx-->Uwsgi</h2>
+					<h2>Guess?</h2>
+					<table class="numeric fixedcols">
+						<thead>
+							<tr>
+								<th></th><th>Socket</th><th>Protocol</th><th>AppServer</th><th>App</th><th>q/s</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr><td>Nginx</td><td></td><td></td><td></td><td></td><td>3780</td></tr>
+							<tr><td>Nginx</td><td>tcp</td><td class="highlight">http</td><td>uWSGI</td><td>py skel</td><td class="highlight">?</td></tr>
+							<tr><td>Nginx</td><td>tcp</td><td class="highlight">fastcgi</td><td>uWSGI</td><td>py skel</td><td class="highlight">?</td></tr>
+							<tr><td>Nginx</td><td>tcp</td><td class="highlight">uwsgi</td><td>uWSGI</td><td>py skel</td><td class="highlight">?</td></tr>
+						</tbody>
+					</table>
+					</section>
+
+				<section>
+					<h2>Results: Weighttp-->Nginx-->Uwsgi</h2>
+					<table class="numeric fixedcols">
+						<thead>
+							<tr>
+								<th></th><th>Socket</th><th>Protocol</th><th>AppServer</th><th>App</th><th>q/s</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr><td>Nginx</td><td></td><td></td><td></td><td></td><td>3780</td></tr>
+							<tr><td>Nginx</td><td>tcp</td><td class="highlight">http</td><td>uWSGI</td><td>py skel</td><td>1247</td></tr>
+							<tr><td>Nginx</td><td>tcp</td><td class="highlight">fastcgi</td><td>uWSGI</td><td>py skel</td><td>1177</td></tr>
+							<tr><td>Nginx</td><td>tcp</td><td class="winner">uwsgi</td><td>uWSGI</td><td>py skel</td><td class="winner">1319</td></tr>
+						</tbody>
+					</table>
+				</section>
+
+				<section>
+					<h2>Results: Weighttp-->Nginx-->Uwsgi</h2>
+					<table class="numeric fixedcols">
+						<thead>
+							<tr>
+								<th></th><th>Socket</th><th>Protocol</th><th>AppServer</th><th>App</th><th>q/s</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr><td>Nginx</td><td></td><td></td><td></td><td></td><td>3780</td></tr>
+							<tr><td>Nginx</td><td>tcp</td><td class="highlight">http</td><td>uWSGI</td><td>py skel</td><td>1247</td></tr>
+							<tr><td>Nginx</td><td>tcp</td><td class="highlight">fastcgi</td><td>uWSGI</td><td>py skel</td><td>1177</td></tr>
+							<tr><td>Nginx</td><td>tcp</td><td class="highlight">uwsgi</td><td>uWSGI</td><td>py skel</td><td>1319</td></tr>
+							<tr><td>Nginx</td><td class="highlight">unix</td><td>uwsgi</td><td>uWSGI</td><td>py skel</td><td><span class="fragment winner">1495</span></td></tr>
+						</tbody>
+					</table>
+				</section>
+
+
 				<section data-state="skel1-graph">
 				</section>
 
 				<section>
 					<h2>Test Python Web Frameworks</h2>
 					<img src="./images/diagrams/web_framework_stacks.png" />
+				</section>
+
+				<section>
+					<h2>Results: Weighttp-->Nginx-->Uwsgi</h2>
+					<table class="numeric fixedcols">
+						<thead>
+							<tr>
+								<th></th><th>Socket</th><th>Protocol</th><th>AppServer</th><th>App</th><th>q/s</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr><td>Nginx</td><td></td><td></td><td></td><td></td><td>3780</td></tr>
+							<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>py skel</td><td>1495</td></tr>
+
+							<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td class="highlight">Django</td><td><span class="fragment">321</span></td></tr>
+							<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td class="highlight">Django*</td><td><span class="fragment">816</span></td></tr>
+							<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td class="highlight">Flask</td><td><span class="fragment">708</span></td></tr>
+							<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td class="highlight">Bottle</td><td><span class="fragment">1338</span></td></tr>
+							<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td class="highlight">CherryPy</td><td><span class="fragment">417</span></td></tr>
+						</tbody>
+					</table>
+					Django* has all default middleware removed.
 				</section>
 
 				<section data-state="py-web-frameworks-graph">
@@ -413,6 +489,33 @@ server {
 					<img src="./images/diagrams/async_framework_stacks.png" />
 				</section>
 
+				<section>
+					<h2>Results: Weighttp-->Nginx-->Uwsgi</h2>
+
+					<small>
+						<table class="numeric fixedcols">
+							<thead>
+								<tr>
+									<th></th><th>Socket</th><th>Protocol</th><th>AppServer</th><th>App</th><th>q/s</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr><td>Nginx</td><td></td><td></td><td></td><td></td><td>3780</td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>py skel</td><td>1495</td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Bottle</td><td>1338</td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Django*</td><td><span>816</span></td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Flask</td><td><span>708</span></td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>CherryPy</td><td><span>417</span></td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Django</td><td><span>321</span></td></tr>
+								<td><td colspan="6"></td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td class="highlight">Twisted</td><td><span class="fragment">530</span></td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td class="highlight">Tornado</td><td><span class="fragment">645</span></td></tr>
+							</tbody>
+						</table>
+						<p>Django* has all default middleware removed.</p>
+					</small>
+				</section>
+
 				<section data-state="py-async-graph">
 				</section>
 
@@ -421,19 +524,77 @@ server {
 					<img src="./images/diagrams/all_framework_stacks.png" />
 				</section>
 
+				<section>
+				<h2>Results: Weighttp-->Nginx-->Uwsgi</h2>
+
+					<small>
+						<table class="numeric fixedcols">
+							<thead>
+								<tr>
+									<th></th><th>Socket</th><th>Protocol</th><th>AppServer</th><th>App</th><th>q/s</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr><td>Nginx</td><td></td><td></td><td></td><td></td><td>3780</td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>py skel</td><td>1495</td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Bottle</td><td>1338</td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Django*</td><td><span>816</span></td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Flask</td><td><span>708</span></td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Tornado</td><td>645</td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Twisted</td><td>530</td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>CherryPy</td><td><span>417</span></td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Django</td><td><span>321</span></td></tr>
+								<td><td colspan="6"></td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td class="highlight">Nodejs</td><td><span class="fragment">721</span></td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td class="highlight">golang</td><td><span class="fragment">1305</span></td></tr>
+							</tbody>
+						</table>
+						<p>Django* has all default middleware removed.</p>
+					</small>
+				</section>
+
+
 				<section data-state="non-py-async-graph">
 				</section>
 				
 				<section>
-				<h2>Lastly: all results in one graph</h2>
-				(except nginx)	
+				<h2>Lastly: all results in desc order</h2>
 				</section>
-				
+
+				<section>
+				<h2>Results: Weighttp-->Nginx-->Uwsgi</h2>
+					<small>
+						<table class="numeric fixedcols">
+							<thead>
+								<tr>
+									<th></th><th>Socket</th><th>Protocol</th><th>AppServer</th><th>App</th><th>q/s</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr><td>Nginx</td><td></td><td></td><td></td><td></td><td>3780</td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>py skel app</td><td>1495</td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Bottle</td><td>1338</td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Golang</td><td>1305</td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Django*</td><td><span>816</span></td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Nodejs</td><td>721</td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Flask</td><td><span>708</span></td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Tornado</td><td>645</td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Twisted</td><td>530</td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>CherryPy</td><td><span>417</span></td></tr>
+								<tr><td>Nginx</td><td>unix</td><td>uwsgi</td><td>uWSGI</td><td>Django</td><td><span>321</span></td></tr>
+							</tbody>
+						</table>
+						<p>Django* has all default middleware removed.</p>
+					</small>
+
+				</section>
+
 				<section data-state="all-graphs">
 				</section>
 
-
-
+				<section data-state="all-graphs-with-nginx">
+					<div class="frosted">Questions?</div>
+				</section>
 
 				<section>
 					<h2>Throughput Vs Performance</h2>

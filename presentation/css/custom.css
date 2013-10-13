@@ -2,6 +2,11 @@
 	color: yellow;
 }
 
+.reveal table td .winner {
+	color: lightgreen;
+}
+
+
 .reveal table { 
 	display: inline-block;
 	border-collapse: collapse;
@@ -150,6 +155,13 @@ html.non-py-async-graph body {
 
 html.all-graphs body {
 	background:url("../images/charts/01_all_graphs.png");
+	background-position:center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+html.all-graphs-with-nginx body {
+	background:url("../images/charts/01_all_graphs_with_nginx.png");
 	background-position:center;
 	background-size: 100%;
 	background-repeat: no-repeat;
