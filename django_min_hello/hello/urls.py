@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'hello.views.home', name='home'),
     # url(r'^hello/', include('hello.foo.urls')),
     url(r'^hello/?', views.hello),
+    url(r'^lookup/?', views.lookup),
     url(r'^render_name/?', views.render_name),
     url(r'^render_table/?', views.hello_table),
 

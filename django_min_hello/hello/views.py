@@ -36,3 +36,16 @@ c2 = Context({ 'data': data })
 def hello_table(request):
     return HttpResponse(t2.render(c2))
 
+import random
+s = set()
+for n in xrange(1000):
+    s.add(random.randint(0, 2000))
+
+def lookup(request):
+    count = 0
+    for n in range(1000):
+        if n in s:
+            count += 1
+    return HttpResponse("Did lookups, found: %s" % count)
+
+
