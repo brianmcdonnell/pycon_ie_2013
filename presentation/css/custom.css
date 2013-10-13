@@ -54,10 +54,25 @@ html.volume-11b body {
 	background-repeat: no-repeat;
 }
 
-html.htop_x2 body {
-	background:url("../images/htop_x2.jpg");
+html.htop body {
+	background:url("../images/htop.png");
 	background-position: center;
 	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+html.htop2 body {
+	background:url("../images/htop2.png");
+	background-position: center;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+html.blue-steel body {
+	background:url("../images/blue_steel.jpg");
+	background-position: center;
+	background-size: 100%;
+	background-repeat: no-repeat;
 }
 
 html.ping-pong body {
