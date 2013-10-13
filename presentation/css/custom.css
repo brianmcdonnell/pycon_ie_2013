@@ -82,6 +82,7 @@ html.bttf-amp body {
 	background:url("../images/bttf_amp.jpg");
 	background-position:center;
 	background-size: 100%;
+	background-repeat: no-repeat;
 }
 
 html.switch-off body {
