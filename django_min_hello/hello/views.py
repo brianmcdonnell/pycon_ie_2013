@@ -1,6 +1,14 @@
 from django.http import HttpResponse
+from django.template import Context, Template
+
 def hello(request):
     return HttpResponse("Hello from Django (without middleware)")
+
+
+t1 = Template('Hello {{ name }}')
+c1 = Context({ 'name': 'brian' })
+def render_name(request):
+    return HttpResponse(t1.render(c1))
 
 data = []
 data.append( [1, 2, 3, 4, 5, 6] )
@@ -8,8 +16,8 @@ data.append( ["Cat", "Fish", "Dog", "Aardvark", "Wallaby", "Zebra"] )
 data.append( [1998, 1998, 1999, 2000, 2000, 2001] )
 data.append( [1, 2, 1, 1, 1, 3] )
 
-from django.template import Context, Template
-t = Template('''<html><head><title>Sample rendering</title></head><body>
+
+t2 = Template('''<html><head><title>Sample rendering</title></head><body>
 <table>
 {% for row in data%}
     <tr>
@@ -24,7 +32,7 @@ t = Template('''<html><head><title>Sample rendering</title></head><body>
 </table>
 </body><html>''')
 
-c = Context({ 'data': data })
+c2 = Context({ 'data': data })
 def hello_table(request):
-    return HttpResponse(t.render(c))
+    return HttpResponse(t2.render(c2))
 

@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'hello.views.home', name='home'),
     # url(r'^hello/', include('hello.foo.urls')),
     url(r'^hello/?', views.hello),
+    url(r'^render_name/?', views.hello_name),
     url(r'^render_table/?', views.hello_table),
 
     # Uncomment the admin/doc line below to enable admin documentation:
