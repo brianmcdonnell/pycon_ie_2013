@@ -607,6 +607,17 @@ server {
 					</ul>
 				</section>
 
+				<section>
+					<h2>Doing work in your code...</h2>
+					<ul>
+						<li>Django-min, /hello, 64 clients => 816 q/s</li>
+						<li>Django-min, /render_name (simple template render), 64 clients => 689 q/s</li>
+						<li>Django-min, /render_table (render 6x4 html table), 64 clients => 223 q/s</li>
+						<li>Django-min, /lookup (50,000 lookups into a 1,000 item set), 64 clients => 71 q/s</li>
+					</ul>
+				</section>
+
+
 				<section id="themes">
 					<h2>Themes</h2>
 					<p>
