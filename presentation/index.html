@@ -252,6 +252,30 @@ $ cat /proc/sys/net/core/somaxconn
 				</section>
 
 				<section>
+					<h2>Using Weighttp</h2>
+					<pre>
+						<code data-trim style="font-size: 20px; margin-top: 20px;">
+$ weighttp -c 1 -n 1000 http://server.pycon.ie/hello
+						</code>
+					</pre>
+					<ul style="display: block">
+						<li>Increase concurrent clients</li>
+						<li>Monitor CPU saturation</li>
+						<li>Monitor thoughput asymptoting</li>
+					</ul>
+					<pre>
+						<code data-trim style="font-size: 20px; margin-top: 20px;">
+$ weighttp -c 2 -n 1000 http://server.pycon.ie/hello
+...
+$ weighttp -c 4 -n 2000 http://server.pycon.ie/hello
+...
+$ weighttp -c 8 -n 4000 http://server.pycon.ie/hello
+... etc...
+						</code>
+					</pre>
+				</section>
+
+				<section>
 					<h2>Nginx Config</h2>
 					<pre>
 						<code data-trim style="font-size: 18px; margin-top: 20px;">
@@ -269,31 +293,6 @@ server {
 		return 200 'Hello from nginx';
 	}
 }
-						</code>
-					</pre>
-				</section>
-
-
-				<section>
-					<h2>Using Weighttp</h2>
-					<pre>
-						<code data-trim style="font-size: 20px; margin-top: 20px;">
-$ weighttp -k -c 1 -n 1000 http://server.pycon.ie/hello
-						</code>
-					</pre>
-					<ul style="display: block">
-						<li>Increase concurrent clients</li>
-						<li>Monitor CPU saturation</li>
-						<li>Monitor thoughput asymptoting</li>
-					</ul>
-					<pre>
-						<code data-trim style="font-size: 20px; margin-top: 20px;">
-$ weighttp -k -c 2 -n 1000 http://server.pycon.ie/hello
-...
-$ weighttp -k -c 4 -n 2000 http://server.pycon.ie/hello
-...
-$ weighttp -k -c 8 -n 4000 http://server.pycon.ie/hello
-... etc...
 						</code>
 					</pre>
 				</section>
