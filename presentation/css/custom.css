@@ -40,6 +40,20 @@ html.grass-scissors body {
 	background-size: 100%;
 }
 
+html.volume-11 body {
+	background:url("../images/volume_11.jpg");
+	background-position:center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+html.volume-11b body {
+	background:url("../images/volume_11b.jpg");
+	background-position:center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
 html.htop_x2 body {
 	background:url("../images/htop_x2.jpg");
 	background-position: center;

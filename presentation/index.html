@@ -170,42 +170,46 @@
 					</div>
 				</section>
 
-				<section>
-					<h2>File Handles</h2>
-					<h3>/etc/security/limits.conf</h3>
-					<pre>
-						<code data-trim style="font-size: 18px; margin-top: 20px;">
+				<section data-state="volume-11">
+					<div class="frosted">
+						<h2>File Handles</h2>
+						<h3>/etc/security/limits.conf</h3>
+						<pre>
+							<code data-trim style="font-size: 18px; margin-top: 20px;">
 *                hard    nofile          131072
 *                soft    nofile          65536
-						</code>
-					</pre>
+							</code>
+						</pre>
 
-					<h3>In terminal for current session</h3>
-					<pre>
-						<code data-trim style="font-size: 18px; margin-top: 20px;">
+						<h3>In terminal for current session</h3>
+						<pre>
+							<code data-trim style="font-size: 18px; margin-top: 20px;">
 $ ulimit -Hn 131072
 $ ulimit -Sn 65536
-						</code>
-					</pre>
+							</code>
+						</pre>
+					</div>
 				</section>
 
-				<section>
-					<h2>Socket Backlog</h2>
-					<h3>/etc/sysctl.conf</h3>
-					<pre>
-						<code data-trim style="font-size: 18px; margin-top: 20px;">
+				<section data-state="volume-11">
+					<div class="frosted">
+						<h2>Socket Backlog</h2>
+						<h3>/etc/sysctl.conf</h3>
+						<pre>
+							<code data-trim style="font-size: 18px; margin-top: 20px;">
 net.core.somaxconn = 8191
 net.ipv4.tcp_max_syn_backlog = 8191
-						</code>
-					</pre>
+							</code>
+						</pre>
 
-					<h3>In terminal for current session</h3>
-					<pre>
-						<code data-trim style="font-size: 18px; margin-top: 20px;">
+						<h3>In terminal for current session</h3>
+						<pre>
+							<code data-trim style="font-size: 18px; margin-top: 20px;">
 sudo sysctl -w net.core.somaxconn=8191
 sudo sysctl -w net.ipv4.tcp_max_syn_backlog=8191
-						</code>
-					</pre>
+							</code>
+						</pre>
+					</div>
 				</section>
 
 				<section>
