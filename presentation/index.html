@@ -98,22 +98,22 @@
 				</section>
 
 				<section>
-					<h2>Python web frameworks?</h2>
+					<h2>Testing Python Web Frameworks</h2>
 					<img src="./images/diagrams/web_framework_stacks.png" />
 				</section>
 
 				<section>
-					<h2>Python Async 'Frameworks'</h2>
+					<h2>Testing Python Async 'Frameworks'</h2>
 					<img src="./images/diagrams/async_framework_stacks.png" />
 				</section>
 
 				<section>
-					<h2>Non-python Async 'Frameworks'</h2>
+					<h2>Testing Non-python Async 'Frameworks'</h2>
 					<img src="./images/diagrams/all_framework_stacks.png" />
 				</section>
 
 				<section>
-					<h2>Interconnecting Socket Types &amp; Protocols</h2>
+					<h2>Socket Types &amp; Protocols</h2>
 					<img src="./images/diagrams/all_framework_stacks_with_protocols.png" />
 				</section>
 
@@ -127,20 +127,21 @@
 					<h2>Measuring Throughput</h2>
 					<ul>
 						<li>Use weighttp to offer load to the server</li>
-						<li>Throughput asymptotes (or worse) at resource exhaustion</li>
+						<li>Throughput asymptotes at resource exhaustion</li>
+						<li>In these tests</li>
 						<ul>
-							<li style="color: lightgreen;">CPU</li>
-							<li>IO</li>
-							<li>Memory</li>
+							<li style="color: lightgreen;">CPU Exhaustion</li>
+							<li>No IO limits hit</li>
+							<li>Never out of Memory</li>
 						</ul>
 					</ul>
 				</section>
 
 
 				<section data-state="servers">
-					<h2>Setup 2 AWS Small Instances</h2>
-					<h3>and watch them fight...</h3>
+					<h2>Set up 2 AWS Small Instances</h2>
 					<img src="./images/diagrams/two_aws_instances.png" />
+					<h3 class="fragment">and watch them fight...</h3>
 				</section>
 
 				<section data-state="mortal-kombat">
