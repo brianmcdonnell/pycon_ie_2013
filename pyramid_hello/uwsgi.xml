@@ -24,6 +24,6 @@
 
     <!-- Specify the mountpoint and django module that will handle uwsgi requests -->
     <module>hello</module>
-    <callable>app</callable>
+    <callable>application</callable>
 </uwsgi>
 
